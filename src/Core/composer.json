@@ -8,6 +8,11 @@
     ],
     "homepage": "http://www.shopware.com",
     "license": "MIT",
+    "extra": {
+      "branch-alias": {
+        "dev-saas-release": "6.2.x-dev"
+      }
+    },
     "autoload": {
         "exclude-from-classmap": [
             "*/Test/"

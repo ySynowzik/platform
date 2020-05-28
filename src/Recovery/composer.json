@@ -3,6 +3,11 @@
     "description": "Recovery for Shopware",
     "type": "library",
     "license": "MIT",
+    "extra": {
+      "branch-alias": {
+        "dev-saas-release": "6.2.x-dev"
+      }
+    },
     "minimum-stability": "stable",
     "require": {
         "php": "^7.2"
