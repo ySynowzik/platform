@@ -7,6 +7,48 @@ in 6.2 minor versions.
 To get the diff for a specific change, go to https://github.com/shopware/platform/commit/XXX where XXX is the change hash
 To get the diff between two versions, go to https://github.com/shopware/platform/compare/v6.1.0...6.2
 
+### 6.2.3
+
+**Addition / Changes**
+
+* Administration
+
+* Core
+    * Added `Czech koruna` as currency
+    * Added `GuestCustomerRegisterEvent`
+    * Changed `\Shopware\Core\Content\ContactForm\SalesChannel\ContactFormRoute` to return empty string instead null.
+    * Fixed RetryMessage-mechanism if message handler class was not a public service
+    * Added ProductCrossSelling Events
+        * Added `CrossSellingProductCriteriaEvent`
+        * Added `CrossSellingProductListCriteriaEvent`
+        * Added `CrossSellingProductStreamCriteriaEvent`
+    * Changed `\Shopware\Core\System\SalesChannel\Api\StructEncoder` to work correctly with aggregations
+    * Changed `product.listing_prices` data structure. The new structure will be reindexed by `\Shopware\Core\Content\Product\DataAbstractionLayer\ProductIndexer` but may take same time to complete
+    * Simplified storefront snippet file loading, PHP classes for snippet files aren't necessary anymore.
+
+* Storefront
+    * Added block `component_offcanvas_cart_header_item_counter` to `src/Storefront/Resources/views/storefront/component/checkout/offcanvas-cart.html.twig`
+    * Added the `--keep-cache` option to the `http:cache:warm:up` to keep the current cache as warmup target
+    * Show required asterisk on telephone number field if the field is required in registration form.
+    * Added request attribute with key `\Shopware\Storefront\Framework\Routing\RequestTransformer::STOREFRONT_URL` for the base url of the storefront. It contains scheme, host, port, sub directory of the web root and the virtual path. Example: http://localhost:8000/subdir/de
+    * Fixed urls in emails for shops with virtual paths like /de
+    * Added `GenericPageLoaderInterface` to `CheckoutConfirmPageLoader`
+
+**Removals**
+
+* Administration
+    * Added `v-model` attribute to input field in `sw-property-search`
+    * Implemented blocks for the different options in the `sw-cms-el-config-product-box` modules `sw-select-field`s. 
+    This allows to append additional options to the `sw-select-field`s.
+        * Added `{% block sw_cms_element_product_box_config_layout_select_options %}`
+        * Added `{% block sw_cms_element_product_box_config_displaymode_select_options %}`
+        * Added `{% block sw_cms_element_product_box_config_settings_vertical_align_options %}`
+    * Added property `placeholderIsPassword` to `sw-password-field` component
+
+* Core
+
+* Storefront
+
 ### 6.2.2
 
 **Addition / Changes**
