@@ -25,7 +25,7 @@ shopware:
             auth_required: true
 
     admin_worker:
-        enable_admin_worker: true
+        enable_admin_worker: false
         poll_interval: 30
         transports: ["default"]
 
