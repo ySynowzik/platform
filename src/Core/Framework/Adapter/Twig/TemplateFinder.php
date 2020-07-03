@@ -159,7 +159,7 @@ class TemplateFinder implements TemplateFinderInterface
             return $this->bundles;
         }
 
-        $namespaceHierarchy = array_unique(array_merge($this->bundles, $this->namespaceHierarchyBuilder->buildHierarchy()));
+        $namespaceHierarchy = $this->namespaceHierarchyBuilder->buildHierarchy();
         $this->defineCache($namespaceHierarchy);
 
         return $this->namespaceHierarchy = $namespaceHierarchy;
