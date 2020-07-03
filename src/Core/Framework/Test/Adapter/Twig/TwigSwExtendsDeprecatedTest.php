@@ -4,6 +4,7 @@ namespace Shopware\Core\Framework\Test\Adapter\Twig;
 
 use PHPUnit\Framework\TestCase;
 use Shopware\Core\Framework\Adapter\Twig\InheritanceExtension;
+use Shopware\Core\Framework\Adapter\Twig\NamespaceHierarchy\BundleHierarchyBuilder;
 use Shopware\Core\Framework\Adapter\Twig\NamespaceHierarchy\NamespaceHierarchyBuilder;
 use Shopware\Core\Framework\Adapter\Twig\TemplateFinder;
 use Shopware\Core\Framework\Test\Adapter\Twig\fixtures\BundleFixture;
@@ -131,17 +132,17 @@ class TwigSwExtendsDeprecatedTest extends TestCase
 
         $twig = new Environment($loader, ['cache' => $this->cache]);
 
-        $templateFinder = new TemplateFinder(
-            $twig,
-            $loader,
-            $this->cacheDir,
-            $this->getContainer()->get(NamespaceHierarchyBuilder::class)
-        );
-
         $kernel = $this->createMock(Kernel::class);
         $kernel->expects(static::any())
             ->method('getBundles')
             ->willReturn($bundles);
+
+        $templateFinder = new TemplateFinder(
+            $twig,
+            $loader,
+            $this->cacheDir,
+            new NamespaceHierarchyBuilder([new BundleHierarchyBuilder($kernel)])
+        );
 
         $templateFinder->registerBundles($kernel);
 
